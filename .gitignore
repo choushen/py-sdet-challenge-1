@@ -1,0 +1,21 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment variables and dependencies
+.env
+venv/
+env/
+*.venv
+
+# Ignore logs and temporary files
+logs/
+*.log
+debug.log
+
+# Ignore test reports
+reports/
+*.html
+*.xml
