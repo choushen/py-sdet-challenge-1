@@ -12,7 +12,8 @@ The challenge is to create and containerize a test automation framework for the 
 - Implement a standard design pattern  
 - Implement comprehensive test coverage  
 - Use a data-driven approach  
-- Implement reporting  
+- Implement reporting
+  - Pytest HTML report
 
 #### **Standards and Code Quality**  
 
@@ -63,7 +64,6 @@ You will also need a couple of other things installed on your machine. See below
 - Docker  
 - Docker Compose  
 - Git  
-
 
 ## **Trouble Shooting Guide**
 
