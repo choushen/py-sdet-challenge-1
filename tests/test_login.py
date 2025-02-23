@@ -1,14 +1,18 @@
 from selenium import webdriver
+from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from utils import get_test_validation_data, get_environment_data
+from utils.driver_factory import DriverFactory
 
 
 """ Test login with valid credentials """
 def test_login() -> None:
-    driver: webdriver.Chrome = webdriver.Chrome()
+    
+    driver: WebDriver = DriverFactory.get_driver(headless=False)
+
     driver.get("https://sweetshop.netlify.app/sweets")
 
     driver.find_element(By.LINK_TEXT, "Login").click()
