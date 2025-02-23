@@ -21,3 +21,4 @@ reports/
 *.xml
 .vscode/settings.json
 resources/checkout_data.json
+resources/test_validation_data.json
