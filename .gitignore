@@ -20,3 +20,4 @@ reports/
 *.html
 *.xml
 .vscode/settings.json
+resources/checkout_data.json
