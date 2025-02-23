@@ -19,3 +19,4 @@ debug.log
 reports/
 *.html
 *.xml
+.vscode/settings.json
