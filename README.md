@@ -73,6 +73,12 @@ Any issues common issues you may encounter/what I encountered and how I resolved
 
 If after following the setup instructions you encounter any issues, please go to the **[author](#author)** section of this document and reach out to me with any questions you might have.
 
+## Future Considerations
+
+- Comprehensive logging
+- Implementing a test data management system (e.g. Test Database/API)
+- Use pydantic for data validation
+
 ## **Author**  
 
 Jacob McKenzie
