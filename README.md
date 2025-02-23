@@ -60,7 +60,7 @@ You will also need a couple of other things installed on your machine. See below
 ### **Prerequisites**
 
 - Visual Studio Code
-- Python 3.13  
+- Python 3.13
 - Pip 25.0  
 - Docker  
 - Docker Compose  
@@ -71,6 +71,7 @@ You will also need a couple of other things installed on your machine. See below
 Any issues common issues you may encounter/what I encountered and how I resolved them will be included in this section of the document.
 
 ### **Issue 1** Running the test suite in VSCode
+
 Ensure that you create a .vscode folder in the root of the project and add a settings.json file with the following content:
 
 ```json
@@ -85,7 +86,7 @@ Ensure that you create a .vscode folder in the root of the project and add a set
 
 ```
 
-### Final note 
+### Final note
 
 If after following the setup instructions you encounter any issues, please go to the **[author](#author)** section of this document and reach out to me with any questions you might have.
 
@@ -94,6 +95,7 @@ If after following the setup instructions you encounter any issues, please go to
 - Comprehensive logging
 - Implementing a test data management system (e.g. Test Database/API)
 - Use pydantic for data validation
+- Include other browsers such as Firefox, Safari, and Edge in the driver factory
 
 ## **Author**  
 
