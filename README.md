@@ -138,6 +138,8 @@ If after following the setup instructions you encounter any issues, please go to
 
 ## Future Considerations
 
+### General Improvements
+
 - Comprehensive logging
 - Implementing a test data management system (e.g. Test Database/API)
 - Use pydantic for data validation
@@ -148,6 +150,14 @@ If after following the setup instructions you encounter any issues, please go to
 - Implement a CI (e.g. Jenkins, GitHub Actions)
 - Revise the project structure
 - Containerise the test suite
+
+### Non-Functional Requirements
+
+- WCAG Compliance (e.g. axe-core)
+- Cross-Browser Testing
+- Device resolution testing
+- Track metrics and check console logs
+- Measure response times to ensure speed and reliability
 
 ## **Author**  
 
