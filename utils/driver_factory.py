@@ -1,5 +1,4 @@
 import logging
-import platform
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -34,15 +33,9 @@ class DriverFactory:
             options.add_argument("--disable-dev-shm-usage")  # Prevent shared memory issues in Docker
 
             try:
-                # Handle ChromeDriver path based on OS
-                if platform.system() == "Windows":
-                    service = ChromeService()  # type: ignore
-                else:
-                    service = ChromeService("/usr/local/bin/chromedriver")  # Path for Docker
-
+                service = ChromeService()  # type: ignore
                 driver = webdriver.Chrome(service=service, options=options) # type: ignore
                 logger.info("WebDriver initialized successfully.")
-
             except Exception as e:
                 logger.error(f"Failed to initialize WebDriver: {e}")
                 raise
