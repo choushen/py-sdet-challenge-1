@@ -146,6 +146,8 @@ If after following the setup instructions you encounter any issues, please go to
 - Include supprot for other browsers such as Firefox, Safari, and Edge in the driver factory
 - Implement allure reporting for better reporting (e.g. screenshots, videos, etc.)
 - Implement a CI (e.g. Jenkins, GitHub Actions)
+- Revise the project structure
+- Containerise the test suite
 
 ## **Author**  
 
