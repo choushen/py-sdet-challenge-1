@@ -26,20 +26,15 @@ The challenge is to create and containerize a test automation framework for the 
 
 ### **Task**  
 
-Create an automated test suite for **[Sweetshop](https://sweetshop.netlify.app/)** that includes:  
-
-- [ ] User registration and login (use the greyed-out, pre-populated credentials)  
-- [ ] Product browsing and search functionality  
-- [ ] Shopping basket operations  
-- [ ] Checkout process  
-- [ ] Order history verification  
+Create an automated test suite for **[Sweetshop](https://sweetshop.netlify.app/)** 
 
 #### **Identified Test Cases**  
 
-- [ ] Login with valid credentials  
-- [ ] Login with invalid credentials  
+- [x] Login with valid credentials  
+- [x] Login with invalid credentials  
 - [ ] Add to Basket  
 - [ ] Remove from Basket  
+- [ ] Edit Basket
 - [ ] Checkout  
 - [ ] Order History  
 
@@ -49,7 +44,16 @@ Create an automated test suite for **[Sweetshop](https://sweetshop.netlify.app/)
 
 ### **Design**  
 
-...  
+- **Page Object Model**
+  - Each page will have its own class  
+  - Each class will contain the locators and methods for the page
+
+- **Driver Factory**
+  - Will be used to create the driver instance  
+
+- **Data Driven Approach**
+  - Will use a JSON file to store test data
+  - Will use a .env file to store environment variables
 
 ## **Setup Instructions**  
 
@@ -65,6 +69,48 @@ You will also need a couple of other things installed on your machine. See below
 - Docker  
 - Docker Compose  
 - Git  
+
+### **Installation**
+
+1. Clone the repository to your local machine using the following command:  
+
+```bash
+git clone git@github.com:choushen/py-sdet-challenge-1.git
+```
+
+2. Navigate to the root of the project and create a virtual environment using the following command:
+
+```bash
+python -m venv venv
+```  
+
+3. Activate the virtual environment using the following command:  
+
+#### **Windows**  
+
+```bash
+.\venv\Scripts\activate
+```
+
+#### **Linux/Mac**  
+
+```bash
+source venv/bin/activate
+```
+
+4. Install the project dependencies using the following command:  
+
+```bash
+pip install -r requirements.txt
+```
+
+### **Running the Test Suite**
+
+To run the test suite, you can use the following command:  
+
+```bash
+pytest tests
+```
 
 ## **Trouble Shooting Guide**
 
@@ -95,8 +141,13 @@ If after following the setup instructions you encounter any issues, please go to
 - Comprehensive logging
 - Implementing a test data management system (e.g. Test Database/API)
 - Use pydantic for data validation
-- Include other browsers such as Firefox, Safari, and Edge in the driver factory
+  - Include more logging in the data_reader utility
+- Shorter docstrings for PEP 8 compliance
+- Include supprot for other browsers such as Firefox, Safari, and Edge in the driver factory
+- Implement allure reporting for better reporting (e.g. screenshots, videos, etc.)
+- Implement a CI (e.g. Jenkins, GitHub Actions)
 
 ## **Author**  
 
-Jacob McKenzie
+**Name:** Jacob McKenzie
+**Email:** jacob.mckenzie@icloud.com
