@@ -92,7 +92,7 @@ pip install -r requirements.txt
 
 3. Set up environment variables.  
 
-Open the **secrets_pt_1**  folder and extract the **.env** file. Place it in the root of the project. 
+Open the **secrets_pt_1**  folder and extract the **.env** file. Place it in the root of the project.
 
 3b. Add the data files
 
