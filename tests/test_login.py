@@ -1,33 +1,40 @@
-from selenium import webdriver
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.remote.webelement import WebElement
-from utils import get_test_validation_data, get_environment_data
+import pytest
 from utils.driver_factory import DriverFactory
+from pages.login_page import LoginPage
+from utils import get_environment_data
+
+@pytest.fixture(scope="function")
+def driver():
+    """Starts and cleans up the driver."""
+    driver = DriverFactory.get_driver(headless=False)
+    driver.get("https://sweetshop.netlify.app/")
+    yield driver
+    driver.quit()
+
+def test_login(driver):
+    """Tests the login functionality with valid credentials."""
+
+    login_page = LoginPage(driver)
+
+    login_page.navigate_to_login()
+
+    login_page.login(get_environment_data()["username"], get_environment_data()["password"])
 
 
-""" Test login with valid credentials """
-def test_login() -> None:
-    
-    driver: WebDriver = DriverFactory.get_driver(headless=False)
-
-    driver.get("https://sweetshop.netlify.app/sweets")
-
-    driver.find_element(By.LINK_TEXT, "Login").click()
-    driver.find_element(By.ID, "exampleInputEmail").send_keys(get_environment_data()["username"])
-    driver.find_element(By.ID, "exampleInputPassword").send_keys(get_environment_data()["password"])
-    driver.find_element(By.CSS_SELECTOR, "button.btn.btn-primary[type='submit']").click()
-
-    # Locate the welcome message element
-    welcome_message: str = driver.find_element(By.CSS_SELECTOR, "p.lead").text
-
-    # Validate the text in the welcome message
-    expected_string: str = get_test_validation_data()["welcome_message"]
-
-    assert welcome_message == expected_string
+    assert login_page.get_welcome_message() == login_page.STRING_VERIFICATION_MSG, (
+        f"Login failed! Expected welcome message '{login_page.STRING_VERIFICATION_MSG}', "
+        f"but got '{login_page.get_welcome_message()}'."
+    )
 
 
+def test_login_invalid_creds(driver):
+    """Tests the login with invalid password."""
+    login_page = LoginPage(driver)
 
-    
+    login_page.navigate_to_login()
+
+    login_page.login(get_environment_data()["username"], "bob")
+
+    assert login_page.get_welcome_message() != login_page.STRING_VERIFICATION_MSG, (
+        f"Test failed! Expected welcome message '{login_page.STRING_VERIFICATION_MSG} should not be displayed"
+    )
