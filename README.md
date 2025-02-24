@@ -55,9 +55,7 @@ Create an automated test suite for **[Sweetshop](https://sweetshop.netlify.app/)
 
 Since you are pulling this repository, I'm going to assume you are familiar with Git and have it installed on your machine. If not, you can download it **[here](https://git-scm.com/downloads)**.  
 
-You will also need a couple of other things installed on your machine. See below for the prerequisites.  
-
-### **Running the Test Suite Locally**  
+You will also need a couple of other things installed on your machine. See below for the prerequisites.    
 
 ## **Prerequisites**  
 
