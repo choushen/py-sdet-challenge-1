@@ -68,7 +68,7 @@ Before running the tests, ensure you have the following installed:
 
 ## **Running the Tests**  
 
-1. Activate the virtual environment.  
+1. [Create](https://docs.python.org/3/library/venv.html) and Activate the virtual environment.  
 
 #### **Windows (PowerShell or CMD)**  
 
