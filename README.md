@@ -64,7 +64,7 @@ Before running the tests, ensure you have the following installed:
 - Python 3.13+  
 - Pip 25.0+  
 - Google Chrome (for Selenium tests)  
-- ChromeDriver (or use `webdriver-manager`, installed automatically)  
+- ~~ChromeDriver (or use `webdriver-manager`, installed automatically)~~
 
 ## **Running the Tests**  
 
