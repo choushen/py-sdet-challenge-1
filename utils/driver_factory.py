@@ -1,8 +1,13 @@
+import logging
+import platform
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
-import platform
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
 class DriverFactory:
     """A class to create WebDriver instances for different browsers."""
@@ -18,7 +23,7 @@ class DriverFactory:
         Returns:
             WebDriver: The WebDriver instance.
         """
-        driver: WebDriver  # Type hint for clarity
+        logger.info(f"Initializing WebDriver for {browser} (headless={headless})")
 
         if browser.lower() == "chrome":
             options = ChromeOptions()
@@ -28,15 +33,23 @@ class DriverFactory:
             options.add_argument("--no-sandbox")  # Required for Docker
             options.add_argument("--disable-dev-shm-usage")  # Prevent shared memory issues in Docker
 
-            # Handle ChromeDriver path based on the OS
-            if platform.system() == "Windows":
-                service = ChromeService()  # type: ignore
-            else:
-                service = ChromeService("/usr/local/bin/chromedriver")  # Set the path for Docker
+            try:
+                # Handle ChromeDriver path based on OS
+                if platform.system() == "Windows":
+                    service = ChromeService()  # type: ignore
+                else:
+                    service = ChromeService("/usr/local/bin/chromedriver")  # Path for Docker
 
-            driver = webdriver.Chrome(service=service, options=options) # type: ignore
+                driver = webdriver.Chrome(service=service, options=options) # type: ignore
+                logger.info("WebDriver initialized successfully.")
+
+            except Exception as e:
+                logger.error(f"Failed to initialize WebDriver: {e}")
+                raise
 
         else:
-            raise ValueError(f"Unsupported browser: {browser}")
+            error_msg = f"Unsupported browser: {browser}"
+            logger.error(error_msg)
+            raise ValueError(error_msg)
 
         return driver
