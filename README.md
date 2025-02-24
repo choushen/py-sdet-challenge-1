@@ -96,7 +96,7 @@ Open the **secrets_pt_1**  folder and extract the **.env** file. Place it in the
 
 3b. Add the data files
 
-Open the **secrets_pt_1.zip**  folder and drop the **resources** folder in the root of the project.
+Open the **secrets_pt_1**  folder and drop the **resources** folder in the root of the project.
 
 4. Run the Selenium test suite.  
 
