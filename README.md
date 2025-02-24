@@ -38,10 +38,6 @@ Create an automated test suite for **[Sweetshop](https://sweetshop.netlify.app/)
 - [ ] Checkout  
 - [ ] Order History  
 
-### **Assumptions and Justifications**  
-
-...  
-
 ### **Design**  
 
 - **Page Object Model**
@@ -61,32 +57,22 @@ Since you are pulling this repository, I'm going to assume you are familiar with
 
 You will also need a couple of other things installed on your machine. See below for the prerequisites.  
 
-### **Prerequisites**
+### **Running the Test Suite Locally**  
 
-- Visual Studio Code
-- Python 3.13
-- Pip 25.0  
-- Docker  
-- Docker Compose  
-- Git  
+## **Prerequisites**  
 
-### **Installation**
+Before running the tests, ensure you have the following installed:  
 
-1. Clone the repository to your local machine using the following command:  
+- Python 3.13+  
+- Pip 25.0+  
+- Google Chrome (for Selenium tests)  
+- ChromeDriver (or use `webdriver-manager`, installed automatically)  
 
-```bash
-git clone git@github.com:choushen/py-sdet-challenge-1.git
-```
+## **Running the Tests**  
 
-2. Navigate to the root of the project and create a virtual environment using the following command:
+1. Activate the virtual environment.  
 
-```bash
-python -m venv venv
-```  
-
-3. Activate the virtual environment using the following command:  
-
-#### **Windows**  
+#### **Windows (PowerShell or CMD)**  
 
 ```bash
 .\venv\Scripts\activate
@@ -98,30 +84,98 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-4. Install the project dependencies using the following command:  
+2. Install dependencies.  
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### **Running the Test Suite**
+3. Set up environment variables.  
 
-To run the test suite, you can use the following command:  
+Open the **secrets_pt_1.zip**  folder and extract the **.env** file. Place it in the root of the project. 
+
+3b. Add the data files
+
+Open the **secrets_pt_1.zip**  folder and drop the **resources** folder in the root of the project.
+
+4. Run the Selenium test suite.  
+
+Run all tests:  
 
 ```bash
-pytest tests
+pytest tests --html=reports/selenium_report.html
 ```
 
-## **Trouble Shooting Guide**
+Run a specific test file:  
 
-Any issues common issues you may encounter/what I encountered and how I resolved them will be included in this section of the document.
+```bash
+pytest tests/test_login.py --html=reports/login_report.html
+```
 
-### **Issue 1** Running the test suite in VSCode
+Run tests in headless mode (no browser UI):
 
-Ensure that you create a .vscode folder in the root of the project and add a settings.json file with the following content:
+```bash
+pytest tests --html=reports/selenium_report.html --headless
+```
+
+5. View test reports.  
+
+#### **Windows (PowerShell)**
+
+```powershell
+Start-Process reports\selenium_report.html
+```
+
+#### **macOS/Linux**
+
+```bash
+open reports/selenium_report.html
+```
+
+## **Troubleshooting Guide**  
+
+### **Running pytest returns "command not found"**  
+
+Ensure the virtual environment is activated before running tests.  
+
+```bash
+source venv/bin/activate  # Linux/macOS
+.\venv\Scripts\activate   # Windows
+```
+
+If `pytest` is still missing, reinstall dependencies:  
+
+```bash
+pip install -r requirements.txt
+```
+
+### **Test reports are not generated**  
+
+Ensure the `reports/` folder exists before running tests:  
+
+```bash
+mkdir -p reports
+```
+
+Then rerun:  
+
+```bash
+pytest tests --html=reports/selenium_report.html
+```
+
+### **Environment variables not loading**  
+
+Ensure `.env` exists and is loaded correctly. To verify:  
+
+```bash
+python -c "import os; print(os.getenv('BASE_URL'))"
+```
+
+### **VS Code does not discover tests**  
+
+Add this configuration to `.vscode/settings.json`:  
 
 ```json
-
 {
     "python.testing.pytestArgs": [
         "tests"
@@ -129,8 +183,9 @@ Ensure that you create a .vscode folder in the root of the project and add a set
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true
 }
-
 ```
+
+Then restart VS Code.
 
 ### Final note
 
@@ -161,5 +216,5 @@ If after following the setup instructions you encounter any issues, please go to
 
 ## **Author**  
 
-**Name:** Jacob McKenzie
-**Email:** jacob.mckenzie@icloud.com
+- **Name:** Jacob McKenzie
+- **Email:** jacob.mckenzie@icloud.com

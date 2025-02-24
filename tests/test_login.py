@@ -6,7 +6,7 @@ from utils import get_environment_data
 @pytest.fixture(scope="function")
 def driver():
     """Starts and cleans up the driver."""
-    driver = DriverFactory.get_driver(headless=False)
+    driver = DriverFactory.get_driver(headless=True)
     driver.get("https://sweetshop.netlify.app/")
     yield driver
     driver.quit()
