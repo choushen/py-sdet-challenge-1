@@ -7,6 +7,7 @@ from utils import get_environment_data
 def driver():
     """Starts and cleans up the driver."""
     driver = DriverFactory.get_driver()
+    driver.set_window_size(1920, 1080)  # Explicitly set size after launch
     driver.get(get_environment_data()["base_url"])
     yield driver
     driver.quit()
