@@ -96,7 +96,7 @@ Open the **secrets_pt_1**  folder and drop the **resources** folder in the root 
 4. build the docker image:  
 
 ```bash
-docker build -t sdet_challenge .
+docker build -t selenium-tests .
 ```
 
 5. Run the docker container:  
