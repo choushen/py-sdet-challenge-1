@@ -102,7 +102,7 @@ docker build -t selenium-tests .
 5. Run the docker container:  
 
 ```bash
-docker run --env-file .env -v ${PWD}/reports:/app/reports selenium-tests pytest --html=reports/test_report.html
+docker run --env-file .env -v ${PWD}/reports:/app/reports selenium-tests
 ```
 
 6. View the test report:  
