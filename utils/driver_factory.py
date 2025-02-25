@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options as ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 # Set up logging
@@ -34,7 +35,7 @@ class DriverFactory:
             options.add_argument("--disable-dev-shm-usage")  # Prevent shared memory issues in Docker
 
             try:
-                service = ChromeService()  # type: ignore
+                service = ChromeService(ChromeDriverManager().install())  # type: ignore
                 driver = webdriver.Chrome(service=service, options=options) # type: ignore
                 logger.info("WebDriver initialized successfully.")
             except Exception as e:
