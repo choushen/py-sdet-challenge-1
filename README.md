@@ -66,9 +66,78 @@ Before running the tests, ensure you have the following installed:
 - Google Chrome (for Selenium tests)  
 - ~~ChromeDriver (or use `webdriver-manager`, installed automatically)~~
 
-## **Running the Tests**  
+## **How to run the tests using Docker**
 
-1. [Create](https://docs.python.org/3/library/venv.html) and Activate the virtual environment.  
+
+1. Clone the repository to your local machine using the following command:  
+
+```bash
+
+git@github.com:choushen/py-sdet-challenge-1.git
+
+```
+
+2. Navigate to the project directory:  
+
+```bash
+
+cd py-sdet-challenge-1
+
+```
+
+3a. Set up environment variables.  
+
+Open the **secrets_pt_1**  folder and extract the **.env** file. Place it in the root of the project.
+
+3b. Add the data files
+
+Open the **secrets_pt_1**  folder and drop the **resources** folder in the root of the project.
+
+4. build the docker image:  
+
+```bash
+docker build -t sdet_challenge .
+```
+
+5. Run the docker container:  
+
+```bash
+docker run --env-file .env -v ${PWD}/reports:/app/reports selenium-tests pytest --html=reports/test_report.html
+```
+
+6. View the test report:  
+
+#### Windows
+
+```bash
+Start-Process reports\test_report.html
+```
+
+#### MacOS/Linux
+
+```bash
+open reports/test_report.html
+```
+
+## **Running the Tests Locally**  
+
+1. Clone the repository to your local machine using the following command:  
+
+```bash
+
+git@github.com:choushen/py-sdet-challenge-1.git
+
+```
+
+2. Navigate to the project directory:  
+
+```bash
+
+cd py-sdet-challenge-1
+
+```
+
+3. [Create](https://docs.python.org/3/library/venv.html) and Activate the virtual environment.  
 
 #### **Windows (PowerShell or CMD)**  
 
@@ -82,21 +151,21 @@ Before running the tests, ensure you have the following installed:
 source venv/bin/activate
 ```
 
-2. Install dependencies.  
+4. Install dependencies.  
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Set up environment variables.  
+5a. Set up environment variables.  
 
 Open the **secrets_pt_1**  folder and extract the **.env** file. Place it in the root of the project.
 
-3b. Add the data files
+5b. Add the data files
 
 Open the **secrets_pt_1**  folder and drop the **resources** folder in the root of the project.
 
-4. Run the Selenium test suite.  
+6. Run the Selenium test suite.  
 
 Run all tests:  
 
@@ -116,7 +185,7 @@ Run tests in headless mode (no browser UI):
 pytest tests --html=reports/selenium_report.html --headless
 ```
 
-5. View test reports.  
+7. View test reports.  
 
 #### **Windows (PowerShell)**
 
@@ -202,7 +271,7 @@ If after following the setup instructions you encounter any issues, please go to
 - Implement allure reporting for better reporting (e.g. screenshots, videos, etc.)
 - Implement a CI (e.g. Jenkins, GitHub Actions)
 - Revise the project structure
-- Containerise the test suite
+- ~~Containerise the test suite~~
 
 ### Non-Functional Requirements
 
