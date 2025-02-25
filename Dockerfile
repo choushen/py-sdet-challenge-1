@@ -14,4 +14,4 @@ RUN apt-get update && apt-get install -y wget unzip && \
 
 COPY . .
 
-CMD ["pytest", "--maxfail=1", "--disable-warnings", "--html=reports/test_report.html"]
+CMD ["pytest", "--disable-warnings", "--html=reports/test_report.html"]
